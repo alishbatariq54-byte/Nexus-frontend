@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Bell, Calendar, TrendingUp, AlertCircle, PlusCircle } from 'lucide-react';
+import { Users, Bell, Calendar as CalendarIcon, TrendingUp, AlertCircle, PlusCircle } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card, CardBody, CardHeader } from '../../components/ui/Card';
 import { Badge } from '../../components/ui/Badge';
@@ -10,9 +10,11 @@ import { useAuth } from '../../context/AuthContext';
 import { CollaborationRequest } from '../../types';
 import { getRequestsForEntrepreneur } from '../../data/collaborationRequests';
 import { investors } from '../../data/users';
+import Calendar from '../../components/Calendar/Calendar';
 
 export const EntrepreneurDashboard: React.FC = () => {
   const { user } = useAuth();
+ const [showCalendar, setShowCalendar] = useState(false);
   const [collaborationRequests, setCollaborationRequests] = useState<CollaborationRequest[]>([]);
   const [recommendedInvestors, setRecommendedInvestors] = useState(investors.slice(0, 3));
   
@@ -85,7 +87,7 @@ export const EntrepreneurDashboard: React.FC = () => {
           </CardBody>
         </Card>
         
-        <Card className="bg-accent-50 border border-accent-100">
+        {/* <Card className="bg-accent-50 border border-accent-100">
           <CardBody>
             <div className="flex items-center">
               <div className="p-3 bg-accent-100 rounded-full mr-4">
@@ -96,9 +98,116 @@ export const EntrepreneurDashboard: React.FC = () => {
                 <h3 className="text-xl font-semibold text-accent-900">2</h3>
               </div>
             </div>
+            <Calendar />
           </CardBody>
-        </Card>
+        </Card> */}
         
+
+
+
+
+
+
+
+
+
+
+
+        
+{/* <Card 
+  className="bg-accent-50 border border-accent-100 cursor-pointer"
+  onClick={() => setShowCalendar(!showCalendar)}>
+ <CardBody>
+  <div className="flex items-center">
+    <div className="p-3 bg-accent-100 rounded-full mr-4">
+      <CalendarIcon size={20} className="text-accent-700" />
+    </div>
+
+    <div>
+      <p className="text-sm font-medium text-accent-700">
+        Upcoming Meetings
+      </p>
+      <h3 className="text-xl font-semibold text-accent-900">2</h3>
+    </div>
+  </div>
+
+  {/* ONLY SHOW WHEN CLICKED }
+  {showCalendar && (
+    <div className="mt-4">
+      <Calendar />
+    </div>
+  )}
+</CardBody>
+</Card> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Card className="bg-accent-50 border border-accent-100">
+  <CardBody>
+
+    <div
+      className="flex items-center cursor-pointer"
+      onClick={() => setShowCalendar(!showCalendar)}
+    >
+      <div className="p-3 bg-accent-100 rounded-full mr-4">
+        <CalendarIcon size={20} className="text-accent-700" />
+      </div>
+
+      <div>
+        <p className="text-sm font-medium text-accent-700">
+          Upcoming Meetings
+        </p>
+        <h3 className="text-xl font-semibold text-accent-900">2</h3>
+      </div>
+    </div>
+
+    {showCalendar && (
+      <div className="mt-4 bg-white p-3 rounded-lg">
+        <Calendar />
+      </div>
+    )}
+
+  </CardBody>
+</Card>
+
+
+
+        {/* Meeting Calendar
+
+  <Card>
+    <CardHeader className="flex justify-between items-center">
+      <h2 className="text-lg font-medium text-gray-900">
+        Meeting Calendar
+      </h2>
+      <Badge variant="primary">Schedule Meetings</Badge>
+    </CardHeader>
+
+    <CardBody>
+      <Calendar />
+    </CardBody>
+  </Card> */}
+
+
+
         <Card className="bg-success-50 border border-success-100">
           <CardBody>
             <div className="flex items-center">
